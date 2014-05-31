@@ -2,27 +2,26 @@
 <html lang="en">
 <head>
     <title>Recipes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-  <h1>Recipes:</h1>
+  <h1>Recipes</h1>
 
   <!-- Search bar for recipes -->
 
   <form action="/recipes" method="get">
     <label for="search">Search:</label>
     <input type="text" id="search" name="search" value="<%= params[:search] %>"/>
-    <input type="submit"/>
+    <input class="button" type="submit"/>
   </form>
+  <br>
 
   <!-- Looping through each recipe name -->
 
-  <ol>
+<div align="center">
     <% @recipes.each do |recipe| %>
-      <li>
-      <a href = "recipes/<%= recipe["id"] %>"><%= recipe["name"] %></a>
-      </li>
+      <a href = "recipes/<%= recipe["id"] %>"><%= recipe["name"] %></a><br>
     <% end %>
-  </ol>
+</div>
 </body>
