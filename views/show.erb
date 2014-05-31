@@ -1,19 +1,29 @@
-<h1>
-  <%= @recipes1[0]["name"] %>
-</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Recipes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<p>
-  <%= @recipes1[0]["description"] %>
-</p>
+  <h1>
+    <%= @recipes1[0]["name"] %>
+  </h1>
 
-<h3> Ingridients: </h3>
-  <ul>
-    <% @recipes1.each do |recipe| %>
-    <li>
-      <%= recipe["ingredients"] %>
-    </li>
-    <% end %>
-  </ul>
+  <p>
+    <%= @recipes1[0]["description"] %>
+  </p>
 
-<h2> Directions: </h2>
-<%= @recipes1[0]["instructions"] %>
+  <h3> Ingridients: </h3>
+    <ul>
+      <% @recipes1.each do |recipe| %>
+      <li>
+        <%= recipe["ingredients"] %>
+      </li>
+      <% end %>
+    </ul>
+
+  <h2> Directions: </h2>
+  <%= @recipes1[0]["instructions"] %>
+</body>
+
