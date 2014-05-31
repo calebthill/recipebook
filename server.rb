@@ -2,6 +2,8 @@ require 'sinatra'
 require 'pry'
 require 'pg'
 
+########## METHODS ##############
+
 def db_connection
   begin
     connection = PG.connect(dbname: 'recipes')
@@ -10,11 +12,17 @@ def db_connection
     connection.close
   end
 end
-
+#################################
 
 get '/recipes' do
-  recipes = db_connection do |conn|
+  if params[:search]
+     query = "SELECT recipes.name, recipes.id FROM recipes
+              WHERE recipes.name ILIKE '%#{params[:search]}%'
+              ORDER BY recipes.name;"
+   else
     query = "SELECT recipes.name, recipes.id FROM recipes ORDER BY recipes.name"
+  end
+  recipes = db_connection do |conn|
     conn.exec(query)
   end
   @recipes = recipes.to_a
